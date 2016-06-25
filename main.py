@@ -37,43 +37,13 @@ if token:
     sp.trace = False
 
     mainPlaylist = sp.user_playlist(username, playlist_id, fields='tracks, next')
-    #for track in mainPlaylist['items']:
-    #    print track['']
-    tracks =  mainPlaylist['tracks']
-    #tracks =  mainPlaylist
-
-
-    items =  tracks['items']
+    items = mainPlaylist['tracks']['items']
     print json.dumps(items, indent=2)
 
     for i in items:
-        print json.dumps(i['track']['uri'], indent=2)
+        #print json.dumps(i['track']['uri'], indent=2)
         targetCurrSongs.append(i['track']['uri'])
     print "content of list is: "
     print targetCurrSongs[:]
-    #print items
-    #pprint.pprint(tracks)
-    #show_tracks(mainPlaylist)
-    #print mainPlaylist['is_local']
-    #print mainPlaylist['items']['track']['id']
-
-    #results = sp.user_playlists(username)
-
-    #for song in results[]
-    #pprint.pprint(results)
-
-    #playlists = sp.user_playlists(username)
-    #for playlist in playlists['items']:
-    #    print playlist
-
 else:
     print("Can't get token for", username)
-
-
-def show_tracks(tracks):
- for i, item in enumerate(tracks['items']):
-     track = item['track']
-     print "   %d %32.32s %s" % (i, track['artists'][0]['name'],
-         track['name'])
-
-
