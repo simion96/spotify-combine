@@ -22,6 +22,7 @@ else:
 clientID = os.getenv('SPOTIPY_CLIENT_ID')
 clientSecret = os.getenv('SPOTIPY_CLIENT_SECRET')
 redirect = os.getenv('SPOTIPY_REDIRECT_URI')
+username = '1118158951'
 
 #print clientID
 #print clientSecret
@@ -45,5 +46,12 @@ if token:
         targetCurrSongs.append(i['track']['uri'])
     print "content of list is: "
     print targetCurrSongs[:]
+
+    print targetCurrSongs[1]
+    track1 = sys.argv[2]
+    print "track to request: " + track1
+    results = sp.user_playlist_remove_all_occurrences_of_tracks(username, playlist_id, track1)
 else:
     print("Can't get token for", username)
+
+
