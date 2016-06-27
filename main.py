@@ -38,16 +38,15 @@ if token:
 
     mainPlaylist = sp.user_playlist(username, playlist_id, fields='tracks, next')
     items = mainPlaylist['tracks']['items']
-    #print json.dumps(items, indent=2)
 
     for i in items:
-        #print json.dumps(i['track']['uri'], indent=2)
+        print json.dumps(i['track']['uri'], indent=2)
         targetCurrSongs.append(i['track']['uri'])
-    #print "content of list is: "
-    #print targetCurrSongs[:]
 
-    results = sp.user_playlist_remove_all_occurrences_of_tracks(user = username, playlist_id = playlist_id, tracks = targetCurrSongs)
+    sp.user_playlist_remove_all_occurrences_of_tracks(user = username, playlist_id = playlist_id, tracks = targetCurrSongs)
 else:
     print("Can't get token for", username)
+
+
 
 
