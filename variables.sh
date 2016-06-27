@@ -1,5 +1,0 @@
-#!/bin/bash
-export SPOTIPY_CLIENT_ID='14924ff6d7684503b7aa22deada2675a'
-export SPOTIPY_CLIENT_SECRET='c21601ae4d5b4001950d953aba112327'
-export SPOTIPY_REDIRECT_URI='http://127.0.0.1:8080/callback/q'
-
