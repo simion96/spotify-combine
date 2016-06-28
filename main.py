@@ -49,6 +49,8 @@ if token:
     sp.user_playlist_remove_all_occurrences_of_tracks(user = username, playlist_id = playlist_id, tracks = targetCurrSongs)
 
     counter = 0
+    requestLimit = 0
+    requested = False;
     for playlist in playlists:
         playlist = sp.user_playlist(spotifyusername, playlists[counter], fields='tracks, next')
         playlistItems = playlist['tracks']['items']
@@ -58,8 +60,23 @@ if token:
     print 'source uris: '
     print sourceSongs
 
-    #sp.user_playlist_add_tracks(username, playlist_id, targetCurrSongs)
-    sp.user_playlist_add_tracks(username, playlist_id, sourceSongs)
+
+
+    leftover = len(sourceSongs)
+    limit = 100
+    start = 0
+    end = 99
+    iterations = len(sourceSongs) / limit +1
+    counter = 0;
+    while counter < iterations :
+        if leftover < limit:
+            sp.user_playlist_add_tracks(username, playlist_id, sourceSongs)
+        else:
+            sp.user_playlist_add_tracks(username, playlist_id, sourceSongs[start:end])
+            start+=100
+            end+=100
+        counter+=1
+            #sp.user_playlist_add_tracks(username, playlist_id, targetCurrSongs)
 
 else:
     print("Can't get token for", username)
