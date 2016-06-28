@@ -11,8 +11,8 @@ import json
 
 if len(sys.argv) > 1:
     username = sys.argv[1]
-    playlist_id = '40YEYqJ3SOytr5ll3FNXKd'
-    playlists = ['2KYqkzbYBsWTqibOMYl8Pd', '5kfJZEHCsoFwzNHnu7aLsO']
+    playlist_id = '4upIHtuHeCofqte1XJT1gd'
+    playlists = ['1LhvlCvAQnDI5ckCxtdGOK', '5P7aPnGpbJ8Ixq6v11Z9sy', '5kR97nOThA3V2PxKAeBU21', '2YmP0N1kn5KHdz86ZLHkbR']
     #track_ids = ['spotify:track:1xalXygnuN9pA9NejSHfJV', '0PO7fVyPLMShxeh9OKjbWB']
     #track_ids = sys.argv[3:]
 else:
@@ -23,6 +23,7 @@ clientID = os.getenv('SPOTIPY_CLIENT_ID')
 clientSecret = os.getenv('SPOTIPY_CLIENT_SECRET')
 redirect = os.getenv('SPOTIPY_REDIRECT_URI')
 username = '1118158951'
+spotifyusername = 'spotifydiscover'
 
 #print clientID
 #print clientSecret
@@ -49,7 +50,7 @@ if token:
 
     counter = 0
     for playlist in playlists:
-        playlist = sp.user_playlist(username, playlists[counter], fields='tracks, next')
+        playlist = sp.user_playlist(spotifyusername, playlists[counter], fields='tracks, next')
         playlistItems = playlist['tracks']['items']
         for x in playlistItems:
             sourceSongs.append(x['track']['uri'])
